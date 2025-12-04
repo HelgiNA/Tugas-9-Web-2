@@ -73,13 +73,13 @@ $result = mysqli_query($koneksi, $query);
                                         $no = 1;
                                         while ($row = mysqli_fetch_assoc($result)) {
                                         ?>
-                                            <tr>
-                                                <td><?php echo $no++; ?></td>
-                                                <td><?php echo $row['nidn']; ?></td>
-                                                <td class="font-weight-bold"><?php echo $row['nama']; ?></td>
-                                                <td><?php echo $row['prodi']; ?></td>
-                                                <td><?php echo $row['email']; ?></td>
-                                            </tr>
+                                        <tr>
+                                            <td><?php echo $no++; ?></td>
+                                            <td><?php echo $row['nidn']; ?></td>
+                                            <td class="font-weight-bold"><?php echo $row['nama']; ?></td>
+                                            <td><?php echo $row['prodi']; ?></td>
+                                            <td><?php echo $row['email']; ?></td>
+                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -95,5 +95,6 @@ $result = mysqli_query($koneksi, $query);
 </main>
 <!--end::App Main-->
 <?php
+
 include('components/footer.php');
 ?>
