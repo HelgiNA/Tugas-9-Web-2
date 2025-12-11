@@ -5,10 +5,12 @@
     include '../../components/topbar.php';
 
     $query = "SELECT
+                n.id_nilai,
                 m.nim,
                 m.nama AS nama_mhs,
                 mk.kodeMatkul,
                 mk.namaMatkul,
+                d.nidn,
                 d.nama AS nama_dosen,
                 n.nilai,
                 n.nilaiHuruf
@@ -18,7 +20,7 @@
                 JOIN tbl_matkul mk ON n.kodeMatkul = mk.kodeMatkul
                 JOIN tbl_dosen d ON n.nidn = d.nidn
             ORDER BY
-                m.nama ASC";
+                m.nama DESC";
 
     $result = mysqli_query($koneksi, $query);
 
@@ -58,22 +60,29 @@
                     <div class="col-12">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="fas fa-table mr-1"></i>
-                                    Data Nilai
-                                </h3>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-table mr-1"></i>
+                                        Data Nilai
+                                    </h3>
+                                    <a href="<?php echo BASE_URL . 'data_master/nilai/create.php' ?>"
+                                        class="btn btn-primary">Tambah Data</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th style="width: 10px">No</th>
-                                            <th>Kode Mahasiswa</th>
+                                            <th>Nomor Induk Mahasiswa</th>
                                             <th>Nama Mahasiswa</th>
                                             <th>Kode Mata Kuliah</th>
                                             <th>Nama Mata Kuliah</th>
+                                            <th>Kode Dosen</th>
+                                            <th>Nama Dosen</th>
                                             <th>Nilai</th>
                                             <th>Nilai Huruf</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,8 +96,16 @@
                                             <td><?php echo $row['nama_mhs']; ?></td>
                                             <td><?php echo $row['kodeMatkul']; ?></td>
                                             <td><?php echo $row['namaMatkul']; ?></td>
+                                            <td><?php echo $row['nidn']; ?></td>
+                                            <td><?php echo $row['nama_dosen']; ?></td>
                                             <td><?php echo $row['nilai']; ?></td>
                                             <td><?php echo $row['nilaiHuruf']; ?></td>
+                                            <td>
+                                                <a href="<?php echo BASE_URL . 'data_master/nilai/edit.php?id_nilai=' . $row['id_nilai'] ?>"
+                                                    class="btn btn-warning">Edit</a>
+                                                <a href="<?php echo BASE_URL . 'data_master/nilai/destroy.php?id_nilai=' . $row['id_nilai'] ?>"
+                                                    class="btn btn-danger">Hapus</a>
+                                            </td>
                                         </tr>
                                         <?php }?>
                                     </tbody>
@@ -104,6 +121,7 @@
     <!--end::App Content-->
 </main>
 <!--end::App Main-->
+
 <?php
 include '../../components/footer.php';
 ?>

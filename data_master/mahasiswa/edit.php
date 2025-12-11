@@ -83,15 +83,15 @@
                                 <label for="prodi">Program Studi</label>
                                 <select class="form-control" id="prodi" name="prodi">
                                     <option selected disabled>Select Program Studi</option>
-                                    <option value="TL" <?php echo $row['prodi'] == 'TL' ? 'selected' : '' ?>>Teknologi
+                                    <option value="TL"                                                       <?php echo $row['prodi'] == 'TL' ? 'selected' : '' ?>>Teknologi
                                         Listrik (TL)</option>
-                                    <option value="TRPL" <?php echo $row['prodi'] == 'TRPL' ? 'selected' : '' ?>>Teknik
+                                    <option value="TRPL"                                                         <?php echo $row['prodi'] == 'TRPL' ? 'selected' : '' ?>>Teknik
                                         Rekayasa Perangkat Lunak (TRPL)</option>
-                                    <option value="TRM" <?php echo $row['prodi'] == 'TRM' ? 'selected' : '' ?>>Teknik
+                                    <option value="TRM"                                                        <?php echo $row['prodi'] == 'TRM' ? 'selected' : '' ?>>Teknik
                                         Rekayasa Manufaktur (TRM)</option>
-                                    <option value="TRMK" <?php echo $row['prodi'] == 'TRMK' ? 'selected' : '' ?>>Teknik
+                                    <option value="TRMK"                                                         <?php echo $row['prodi'] == 'TRMK' ? 'selected' : '' ?>>Teknik
                                         Rekayasa Mekatronika (TRMK)</option>
-                                    <option value="UMUM" <?php echo $row['prodi'] == 'UMUM' ? 'selected' : '' ?>>Umum
+                                    <option value="UMUM"                                                         <?php echo $row['prodi'] == 'UMUM' ? 'selected' : '' ?>>Umum
                                     </option>
                                 </select>
                             </div>
@@ -109,7 +109,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>

@@ -4,13 +4,29 @@
     include '../../components/sidebar.php';
     include '../../components/topbar.php';
 
-    $query = "SELECT
+    $queryDosen = "SELECT
                 tbl_dosen.nidn,
                 tbl_dosen.nama
             FROM
                 tbl_dosen";
 
-    $result = mysqli_query($koneksi, $query);
+    $resultDosen = mysqli_query($koneksi, $queryDosen);
+
+    $queryMahasiswa = "SELECT
+                tbl_mahasiswa.nim,
+                tbl_mahasiswa.nama
+            FROM
+                tbl_mahasiswa";
+
+    $resultMahasiswa = mysqli_query($koneksi, $queryMahasiswa);
+
+    $queryMataKuliah = "SELECT
+                tbl_matkul.kodeMatkul,
+                tbl_matkul.namaMatkul
+            FROM
+                tbl_matkul";
+
+    $resultMataKuliah = mysqli_query($koneksi, $queryMataKuliah);
 ?>
 
 <!--begin::App Main-->
@@ -22,16 +38,16 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Data Mata Kuliah</h3>
+                    <h3 class="mb-0">Data Nilai</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Data Master</li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="<?php echo BASE_URL . 'data_master/mahasiswa/index.php' ?>">Data Mata Kuliah</a>
+                            <a href="<?php echo BASE_URL . 'data_master/nilai/index.php' ?>">Data Nilai</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah Data Mata Kuliah</li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Data Nilai</li>
                     </ol>
                 </div>
             </div>
@@ -51,44 +67,52 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">
                                 <i class="fas fa-table mr-1"></i>
-                                Tambah Data Mata Kuliah
+                                Tambah Data Nilai
                             </h3>
-                            <a href="<?php echo BASE_URL . 'data_master/mata kuliah/index.php' ?>"
+                            <a href="<?php echo BASE_URL . 'data_master/nilai/index.php' ?>"
                                 class="btn btn-secondary">Kembali</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="<?php echo BASE_URL . 'data_master/mata kuliah/store.php' ?>" method="post">
+                    <form action="<?php echo BASE_URL . 'data_master/nilai/store.php' ?>" method="post">
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="nim">Nomor Induk Mahasiswa</label>
+                                <select class="form-control" id="nim" name="nim">
+                                    <option selected disabled>Select Nomor Induk Mahasiswa</option>
+                                    <?php foreach ($resultMahasiswa as $row) {?>
+                                    <option value="<?php echo $row['nim']; ?>"><?php echo $row['nim']; ?> |
+                                        <?php echo $row['nama']; ?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="kodeMatkul">Kode Mata Kuliah</label>
-                                <input type="text" class="form-control" id="kodeMatkul" name="kodeMatkul"
-                                    placeholder="Enter Kode Mata Kuliah">
-                            </div>
-                            <div class="form-group">
-                                <label for="namaMatkul">Nama Mata Kuliah</label>
-                                <input type="text" class="form-control" id="namaMatkul" name="namaMatkul"
-                                    placeholder="Enter Nama Mata Kuliah">
-                            </div>
-                            <div class="form-group">
-                                <label for="sks">SKS</label>
-                                <select class="form-control" id="sks" name="sks">
-                                    <option selected disabled>Select SKS</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                <select class="form-control" id="kodeMatkul" name="kodeMatkul">
+                                    <option selected disabled>Select Kode Mata Kuliah</option>
+                                    <?php foreach ($resultMataKuliah as $row) {?>
+                                    <option value="<?php echo $row['kodeMatkul']; ?>"><?php echo $row['kodeMatkul']; ?>
+                                        |
+                                        <?php echo $row['namaMatkul']; ?></option>
+                                    <?php }?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="nidn">Nomor Induk Dosen</label>
                                 <select class="form-control" id="nidn" name="nidn">
                                     <option selected disabled>Select Nomor Induk Dosen</option>
-                                    <?php foreach ($result as $row) {?>
+                                    <?php foreach ($resultDosen as $row) {?>
                                     <option value="<?php echo $row['nidn']; ?>"><?php echo $row['nidn']; ?> |
                                         <?php echo $row['nama']; ?></option>
                                     <?php }?>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nilai">Nilai</label>
+                                <input type="text" class="form-control" id="nilai" name="nilai"
+                                    placeholder="Enter Nilai">
                             </div>
                         </div>
                         <!-- /.card-body -->
