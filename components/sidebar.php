@@ -39,25 +39,25 @@
                     </a>
                     <ul class="nav nav-treeview active">
                         <li class="nav-item">
-                            <a href="mahasiswa.php" class="nav-link">
+                            <a href="data_master/mahasiswa/index.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Data Mahasiswa</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="dosen.php" class="nav-link">
+                            <a href="data_master/dosen/index.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Data Dosen</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="mataKuliah.php" class="nav-link">
+                            <a href="data_master/mata kuliah/index.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Data Mata Kuliah</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="nilai.php" class="nav-link">
+                            <a href="data_master/nilai/index.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Data Nilai</p>
                             </a>

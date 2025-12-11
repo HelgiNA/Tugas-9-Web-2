@@ -1,20 +1,20 @@
 <?php
-include('koneksi.php');
-include('components/header.php');
-include('components/sidebar.php');
-include('components/topbar.php');
+    include '../../koneksi.php';
+    include '../../components/header.php';
+    include '../../components/sidebar.php';
+    include '../../components/topbar.php';
 
-$query = "SELECT
-                nidn, 
-                nama, 
-                prodi, 
+    $query = "SELECT
+                nidn,
+                nama,
+                prodi,
                 email
             FROM
                 tbl_dosen
             ORDER BY
                 nidn ASC";
 
-$result = mysqli_query($koneksi, $query);
+    $result = mysqli_query($koneksi, $query);
 
 ?>
 
@@ -52,10 +52,14 @@ $result = mysqli_query($koneksi, $query);
                     <div class="col-12">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="fas fa-table mr-1"></i>
-                                    Data Dosen
-                                </h3>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-table mr-1"></i>
+                                        Data Dosen
+                                    </h3>
+                                    <a href="<?php echo BASE_URL . 'data_master/dosen/create.php' ?>"
+                                        class="btn btn-primary">Tambah Data</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped table-hover">
@@ -66,21 +70,29 @@ $result = mysqli_query($koneksi, $query);
                                             <th>Nama Dosen</th>
                                             <th>Program Studi</th>
                                             <th>Email</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $no = 1;
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                        ?>
+                                            $no = 1;
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row['nidn']; ?></td>
                                             <td class="font-weight-bold"><?php echo $row['nama']; ?></td>
                                             <td><?php echo $row['prodi']; ?></td>
                                             <td><?php echo $row['email']; ?></td>
+                                            <td>
+                                                <a href="<?php echo BASE_URL . 'data_master/dosen/edit.php?nidn=' . $row['nidn']; ?>"
+                                                    class="btn btn-primary">Edit</a>
+                                                <a href="<?php echo BASE_URL . 'data_master/dosen/destroy.php?nidn=' . $row['nidn']; ?>"
+                                                    class="btn btn-danger"
+                                                    onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                                            </td>
                                         </tr>
-                                        <?php } ?>
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>
@@ -96,5 +108,5 @@ $result = mysqli_query($koneksi, $query);
 <!--end::App Main-->
 <?php
 
-include('components/footer.php');
+include '../../components/footer.php';
 ?>

@@ -1,26 +1,26 @@
 <?php
-include('koneksi.php');
-include('components/header.php');
-include('components/sidebar.php');
-include('components/topbar.php');
+    include 'koneksi.php';
+    include 'components/header.php';
+    include 'components/sidebar.php';
+    include 'components/topbar.php';
 
-// --- LOGIC: MENGHITUNG STATISTIK UNTUK DASHBOARD ---
-// 1. Hitung Total Mahasiswa
-$query_mahasiswa = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tbl_mahasiswa");
-$data_mahasiswa = mysqli_fetch_assoc($query_mahasiswa);
+    // --- LOGIC: MENGHITUNG STATISTIK UNTUK DASHBOARD ---
+    // 1. Hitung Total Mahasiswa
+    $query_mahasiswa = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tbl_mahasiswa");
+    $data_mahasiswa  = mysqli_fetch_assoc($query_mahasiswa);
 
-// 2. Hitung Total Dosen
-$q_dosen = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tbl_dosen");
-$d_dosen = mysqli_fetch_assoc($q_dosen);
+    // 2. Hitung Total Dosen
+    $q_dosen = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tbl_dosen");
+    $d_dosen = mysqli_fetch_assoc($q_dosen);
 
-// 3. Hitung Total Mata Kuliah
-$q_matkul = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tbl_matkul");
-$d_matkul = mysqli_fetch_assoc($q_matkul);
+    // 3. Hitung Total Mata Kuliah
+    $q_matkul = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tbl_matkul");
+    $d_matkul = mysqli_fetch_assoc($q_matkul);
 
-// 4. Hitung Rata-rata Nilai (Contoh statistik tambahan)
-$q_nilai = mysqli_query($koneksi, "SELECT AVG(nilai) as rata_rata FROM tbl_nilai");
-$d_nilai = mysqli_fetch_assoc($q_nilai);
-$rata_rata = number_format($d_nilai['rata_rata'], 2);
+    // 4. Hitung Rata-rata Nilai (Contoh statistik tambahan)
+    $q_nilai   = mysqli_query($koneksi, "SELECT AVG(nilai) as rata_rata FROM tbl_nilai");
+    $d_nilai   = mysqli_fetch_assoc($q_nilai);
+    $rata_rata = number_format($d_nilai['rata_rata'], 2);
 ?>
 
 <!--begin::App Main-->
@@ -134,12 +134,12 @@ $rata_rata = number_format($d_nilai['rata_rata'], 2);
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $query = "SELECT 
-                                                m.nim, 
-                                                m.nama AS nama_mhs, 
-                                                mk.namaMatkul, 
-                                                d.nama AS nama_dosen, 
-                                                n.nilai, 
+                                                $query = "SELECT
+                                                m.nim,
+                                                m.nama AS nama_mhs,
+                                                mk.namaMatkul,
+                                                d.nama AS nama_dosen,
+                                                n.nilai,
                                                 n.nilaiHuruf
                                                 FROM tbl_nilai n
                                                 JOIN tbl_mahasiswa m ON n.nim = m.nim
@@ -147,10 +147,10 @@ $rata_rata = number_format($d_nilai['rata_rata'], 2);
                                                 JOIN tbl_dosen d ON n.nidn = d.nidn
                                                 ORDER BY m.nama ASC";
 
-                                            $result = mysqli_query($koneksi, $query);
-                                            $no = 1;
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                            ?>
+                                                $result = mysqli_query($koneksi, $query);
+                                                $no     = 1;
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                ?>
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
                                                 <td><?php echo $row['nim']; ?></td>
@@ -160,7 +160,7 @@ $rata_rata = number_format($d_nilai['rata_rata'], 2);
                                                 <td class="text-center"><?php echo $row['nilai']; ?></td>
                                                 <td class="text-center"><?php echo $row['nilaiHuruf']; ?></td>
                                             </tr>
-                                            <?php } ?>
+                                            <?php }?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -176,5 +176,5 @@ $rata_rata = number_format($d_nilai['rata_rata'], 2);
 </main>
 <!--end::App Main-->
 <?php
-include('components/footer.php');
+include 'components/footer.php';
 ?>

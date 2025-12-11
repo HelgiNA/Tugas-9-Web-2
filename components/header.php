@@ -38,7 +38,8 @@
         crossorigin="anonymous" />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="css/adminlte.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>css/adminlte.css" />
+    <base href="<?php echo BASE_URL ?>">
     <!--end::Required Plugin(AdminLTE)-->
 </head>
 <!--end::Head-->
