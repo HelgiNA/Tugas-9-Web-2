@@ -10,4 +10,13 @@ if (! $koneksi) {
     die("Koneksi Gagal: " . mysqli_connect_error());
 }
 
-define('BASE_URL', 'http://localhost/Tugas-9-Web-2/');
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://";
+
+$server_name = $_SERVER['HTTP_HOST'];
+
+$script_path = str_replace('\\', '/', __DIR__);
+$doc_root    = str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']);
+
+$folder_name = str_replace($doc_root, '', $script_path);
+
+define('BASE_URL', $protocol . $server_name . $folder_name . '/');
