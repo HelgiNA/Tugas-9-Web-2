@@ -34,7 +34,9 @@
                     <ol class="breadcrumb float-sm-end">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Data Master</li>
-                        <li class="breadcrumb-item active" aria-current="page">Data Dosen</li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="<?php echo BASE_URL . 'data_master/dosen/index.php' ?>">Data Dosen</a>
+                        </li>
                         <li class="breadcrumb-item active" aria-current="page">Ubah Data Dosen</li>
                     </ol>
                 </div>
@@ -52,7 +54,14 @@
             <section class="content">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Quick Example</h3>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="card-title">
+                                <i class="fas fa-table mr-1"></i>
+                                Ubah Data Dosen
+                            </h3>
+                            <a href="<?php echo BASE_URL . 'data_master/dosen/index.php' ?>"
+                                class="btn btn-secondary">Kembali</a>
+                        </div>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
