@@ -13,7 +13,7 @@
             FROM
                 tbl_mahasiswa
             ORDER BY
-                tbl_mahasiswa.nim";
+                tbl_mahasiswa.nim DESC";
 
     $result = mysqli_query($koneksi, $query);
 
@@ -53,10 +53,14 @@
                     <div class="col-12">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="fas fa-table mr-1"></i>
-                                    Data Mahasiswa
-                                </h3>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-table mr-1"></i>
+                                        Data Mahasiswa
+                                    </h3>
+                                    <a href="<?php echo BASE_URL . 'data_master/mahasiswa/create.php' ?>"
+                                        class="btn btn-primary">Tambah Data</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped table-hover">
