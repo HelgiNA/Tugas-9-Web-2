@@ -55,10 +55,14 @@
                     <div class="col-12">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="fas fa-table mr-1"></i>
-                                    Data Mata Kuliah
-                                </h3>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-table mr-1"></i>
+                                        Data Mata Kuliah
+                                    </h3>
+                                    <a href="<?php echo BASE_URL . 'data_master/mata kuliah/create.php' ?>"
+                                        class="btn btn-primary">Tambah Data</a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped table-hover">
@@ -70,6 +74,7 @@
                                             <th>SKS</th>
                                             <th>Nomor Induk Dosen</th>
                                             <th>Nama Dosen</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -84,6 +89,13 @@
                                             <td><?php echo $row['sks']; ?></td>
                                             <td><?php echo $row['nidn']; ?></td>
                                             <td><?php echo $row['nama']; ?></td>
+                                            <td>
+                                                <a href="<?php echo BASE_URL . 'data_master/mata kuliah/edit.php?kodeMatkul=' . $row['kodeMatkul']; ?>"
+                                                    class="btn btn-primary">Edit</a>
+                                                <a href="<?php echo BASE_URL . 'data_master/mata kuliah/destroy.php?kodeMatkul=' . $row['kodeMatkul']; ?>"
+                                                    class="btn btn-danger"
+                                                    onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                                            </td>
                                         </tr>
                                         <?php }?>
                                     </tbody>
