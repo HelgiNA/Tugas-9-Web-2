@@ -38,12 +38,16 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview active">
+
+                        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Dosen') {?>
                         <li class="nav-item">
                             <a href="data_master/mahasiswa/index.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Data Mahasiswa</p>
                             </a>
                         </li>
+                        <?php }?>
+
                         <li class="nav-item">
                             <a href="data_master/dosen/index.php" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>

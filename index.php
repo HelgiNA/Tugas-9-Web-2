@@ -1,4 +1,5 @@
 <?php
+    include 'block.php';
     include 'koneksi.php';
     include 'components/header.php';
     include 'components/sidebar.php';
@@ -63,7 +64,7 @@
                                 <div class="icon">
                                     <i class="fas fa-user-graduate"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Lihat Detail <i
+                                <a href="data_master/mahasiswa/index.php" class="small-box-footer">Lihat Detail <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -77,7 +78,7 @@
                                 <div class="icon">
                                     <i class="fas fa-chalkboard-teacher"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Lihat Detail <i
+                                <a href="data_master/dosen/index.php" class="small-box-footer">Lihat Detail <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -91,7 +92,7 @@
                                 <div class="icon">
                                     <i class="fas fa-book"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Lihat Detail <i
+                                <a href="data_master/mata_kuliah/index.php" class="small-box-footer">Lihat Detail <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -105,11 +106,12 @@
                                 <div class="icon">
                                     <i class="fas fa-chart-line"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Selengkapnya <i
+                                <a href="data_master/nilai/index.php" class="small-box-footer">Selengkapnya <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
+                    <?php if ($_SESSION['role'] == 'Dosen') {?>
                     <div class="row">
                         <div class="col-12">
                             <div class="card card-primary card-outline">
@@ -147,10 +149,10 @@
                                                 JOIN tbl_dosen d ON n.nidn = d.nidn
                                                 ORDER BY m.nama ASC";
 
-                                                $result = mysqli_query($koneksi, $query);
-                                                $no     = 1;
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                ?>
+                                                    $result = mysqli_query($koneksi, $query);
+                                                    $no     = 1;
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                    ?>
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
                                                 <td><?php echo $row['nim']; ?></td>
@@ -167,6 +169,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php }?>
                 </div>
             </section>
             <!--end::Row-->

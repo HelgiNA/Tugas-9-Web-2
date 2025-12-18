@@ -1,4 +1,6 @@
 <?php
+
+    session_start();
     include '../../koneksi.php';
     include '../../components/header.php';
     include '../../components/sidebar.php';
@@ -60,8 +62,10 @@
                                         <i class="fas fa-table mr-1"></i>
                                         Data Mata Kuliah
                                     </h3>
+                                    <?php if ($_SESSION['role'] == 'Dosen') {?>
                                     <a href="<?php echo BASE_URL . 'data_master/mata kuliah/create.php' ?>"
                                         class="btn btn-primary">Tambah Data</a>
+                                    <?php }?>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -74,7 +78,9 @@
                                             <th>SKS</th>
                                             <th>Nomor Induk Dosen</th>
                                             <th>Nama Dosen</th>
+                                            <?php if ($_SESSION['role'] == 'Dosen') {?>
                                             <th>Aksi</th>
+                                            <?php }?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -89,6 +95,7 @@
                                             <td><?php echo $row['sks']; ?></td>
                                             <td><?php echo $row['nidn']; ?></td>
                                             <td><?php echo $row['nama']; ?></td>
+                                            <?php if ($_SESSION['role'] == 'Dosen') {?>
                                             <td>
                                                 <a href="<?php echo BASE_URL . 'data_master/mata kuliah/edit.php?kodeMatkul=' . $row['kodeMatkul']; ?>"
                                                     class="btn btn-primary">Edit</a>
@@ -96,6 +103,7 @@
                                                     class="btn btn-danger"
                                                     onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                             </td>
+                                            <?php }?>
                                         </tr>
                                         <?php }?>
                                     </tbody>

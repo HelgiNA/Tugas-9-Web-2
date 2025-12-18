@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include '../../koneksi.php';
     include '../../components/header.php';
     include '../../components/sidebar.php';
@@ -57,8 +58,10 @@
                                         <i class="fas fa-table mr-1"></i>
                                         Data Dosen
                                     </h3>
+                                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Dosen') {?>
                                     <a href="<?php echo BASE_URL . 'data_master/dosen/create.php' ?>"
                                         class="btn btn-primary">Tambah Data</a>
+                                    <?php }?>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -70,7 +73,9 @@
                                             <th>Nama Dosen</th>
                                             <th>Program Studi</th>
                                             <th>Email</th>
+                                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Dosen') {?>
                                             <th>Aksi</th>
+                                            <?php }?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -84,6 +89,7 @@
                                             <td class="font-weight-bold"><?php echo $row['nama']; ?></td>
                                             <td><?php echo $row['prodi']; ?></td>
                                             <td><?php echo $row['email']; ?></td>
+                                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Dosen') {?>
                                             <td>
                                                 <a href="<?php echo BASE_URL . 'data_master/dosen/edit.php?nidn=' . $row['nidn']; ?>"
                                                     class="btn btn-primary">Edit</a>
@@ -91,6 +97,7 @@
                                                     class="btn btn-danger"
                                                     onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
                                             </td>
+                                            <?php }?>
                                         </tr>
                                         <?php }?>
                                     </tbody>

@@ -1,4 +1,5 @@
 <?php
+    include '../../data_master/isRole.php';
     include '../../koneksi.php';
     include '../../components/header.php';
     include '../../components/sidebar.php';

@@ -1,4 +1,6 @@
 <?php
+
+    session_start();
     include '../../koneksi.php';
     include '../../components/header.php';
     include '../../components/sidebar.php';
@@ -65,8 +67,10 @@
                                         <i class="fas fa-table mr-1"></i>
                                         Data Nilai
                                     </h3>
+                                    <?php if ($_SESSION['role'] == 'Dosen') {?>
                                     <a href="<?php echo BASE_URL . 'data_master/nilai/create.php' ?>"
                                         class="btn btn-primary">Tambah Data</a>
+                                    <?php }?>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -82,7 +86,9 @@
                                             <th>Nama Dosen</th>
                                             <th>Nilai</th>
                                             <th>Nilai Huruf</th>
+                                            <?php if ($_SESSION['role'] == 'Dosen') {?>
                                             <th>Aksi</th>
+                                            <?php }?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -100,12 +106,14 @@
                                             <td><?php echo $row['nama_dosen']; ?></td>
                                             <td><?php echo $row['nilai']; ?></td>
                                             <td><?php echo $row['nilaiHuruf']; ?></td>
+                                            <?php if ($_SESSION['role'] == 'Dosen') {?>
                                             <td>
                                                 <a href="<?php echo BASE_URL . 'data_master/nilai/edit.php?id_nilai=' . $row['id_nilai'] ?>"
                                                     class="btn btn-warning">Edit</a>
                                                 <a href="<?php echo BASE_URL . 'data_master/nilai/destroy.php?id_nilai=' . $row['id_nilai'] ?>"
                                                     class="btn btn-danger">Hapus</a>
                                             </td>
+                                            <?php }?>
                                         </tr>
                                         <?php }?>
                                     </tbody>

@@ -1,4 +1,5 @@
 <?php
+include '../../data_master/isRole.php';
 include '../../koneksi.php';
 
 $nim        = $_POST['nim'];

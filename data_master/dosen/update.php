@@ -1,4 +1,6 @@
 <?php
+include '../../data_master/isRole.php';
+
 // membuka jalur ke database
 include "../../koneksi.php";
 

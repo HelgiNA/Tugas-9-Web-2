@@ -1,4 +1,6 @@
 <?php
+include '../../data_master/isRole.php';
+
 include '../../koneksi.php';
 
 if (! isset($_POST['kodeMatkul'])) {
