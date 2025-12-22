@@ -10,7 +10,8 @@
                 tbl_mahasiswa.nama,
                 tbl_mahasiswa.prodi,
                 tbl_mahasiswa.angkatan,
-                tbl_mahasiswa.email
+                tbl_mahasiswa.email,
+                tbl_mahasiswa.foto
             FROM
                 tbl_mahasiswa
             ORDER BY
@@ -67,6 +68,7 @@
                                 <table id="example1" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Foto</th>
                                             <th style="width: 10px">No</th>
                                             <th>Nomor Induk Mahasiswa</th>
                                             <th>Nama Mahasiswa</th>
@@ -82,6 +84,13 @@
                                             while ($row = mysqli_fetch_assoc($result)) {
                                             ?>
                                         <tr>
+                                            <td>
+                                                <?php if (! empty($row['foto'])): ?>
+                                                    <img src="<?php echo BASE_URL . 'uploads/' . $row['foto']; ?>" alt="Foto" width="50" class="img-thumbnail">
+                                                <?php else: ?>
+                                                    <span class="badge badge-secondary">No Photo</span>
+                                                <?php endif; ?>
+                                            </td>
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row['nim']; ?></td>
                                             <td class="font-weight-bold"><?php echo $row['nama']; ?></td>

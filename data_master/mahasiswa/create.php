@@ -52,7 +52,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="<?php echo BASE_URL . 'data_master/mahasiswa/store.php' ?>" method="post">
+                    <form action="<?php echo BASE_URL . 'data_master/mahasiswa/store.php' ?>" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nim">Nomor Induk Mahasiswa</label>
@@ -84,6 +84,11 @@
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     placeholder="Enter Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="foto">Foto Mahasiswa</label>
+                                <input type="file" class="form-control" id="foto" name="foto" accept=".jpg,.jpeg,.png">
+                                <small class="text-muted">Format: JPG, JPEG, PNG. Max: 2MB</small>
                             </div>
                         </div>
                         <!-- /.card-body -->
